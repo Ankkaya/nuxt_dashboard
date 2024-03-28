@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { useStorage } from "@vueuse/core";
+
 const { isHelpSlideoverOpen } = useDashboard();
 // const { isDashboardSearchModalOpen } = useUIState()
 const { metaSymbol } = useShortcuts();
@@ -14,7 +16,7 @@ const items = computed(() => [
     {
       label: "Settings",
       icon: "i-heroicons-cog-8-tooth",
-      to: "/settings",
+      to: "/settings/general",
     },
     // {
     //     label: 'Command menu',
@@ -56,7 +58,8 @@ const items = computed(() => [
       label: "Sign out",
       icon: "i-heroicons-arrow-left-on-rectangle",
       click: () => {
-        useState("auth", () => null);
+        const accessToken = useStorage("accessToken", "");
+        accessToken.value = "";
         navigateTo("/login");
       },
     },
