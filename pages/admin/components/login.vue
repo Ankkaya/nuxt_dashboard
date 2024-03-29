@@ -39,7 +39,7 @@ import ButtonGroup from "./buttonGroup.vue";
 
 const item = {
   label: "登录",
-  description: "用户登录",
+  description: "管理员登录",
 };
 
 const loginSchema = object({
@@ -63,12 +63,12 @@ interface Result {
   };
 }
 
-const accessToken = useStorage("accessToken", "");
+const accessToken = useStorage<string | null>("accessToken", "");
 
 const userStore = useUserStore();
 
 async function onSubmitLogin(event: FormSubmitEvent<LoginSchema>) {
-  const data: Result = await $fetch("/user/login", {
+  const data: Result = await $fetch("/user/admin/login", {
     method: "POST",
     baseURL: "http://localhost:3001",
     body: event.data,

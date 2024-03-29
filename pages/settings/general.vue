@@ -88,8 +88,13 @@ const userInfoForm = ref({
   captcha: "",
 });
 
+const userStore = useUserStore();
+
 async function onSubmitForm(event: FormSubmitEvent<UserInfoSchema>) {
-  const data = await $fetch("/user/update", {
+  const apiPath = userStore.userInfo?.isAdmin
+    ? "/user/admin/update"
+    : "/user/update";
+  const data = await $fetch(apiPath, {
     method: "POST",
     baseURL: "http://localhost:3001",
     headers: {
