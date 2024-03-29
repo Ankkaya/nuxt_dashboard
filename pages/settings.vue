@@ -13,14 +13,14 @@
 <script setup lang="ts">
 const links = [
   {
-    label: "General",
+    label: "基础信息",
     icon: "i-heroicons-user-circle",
     to: "/settings/general",
   },
   {
-    label: "Members",
-    icon: "i-heroicons-chart-bar",
-    to: "/settings/members",
+    label: "密码修改",
+    icon: "i-heroicons-lock-closed",
+    to: "/settings/password",
   },
   {
     label: "Notifications",
